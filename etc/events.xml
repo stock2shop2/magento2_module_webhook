@@ -5,8 +5,8 @@
 >
 	<event name='sales_order_save_after'>
 		<observer
-			name='Stock2Shop\OrderExport\Observer\OrderSaveAfter'
 			instance='Stock2Shop\OrderExport\Observer\OrderSaveAfter'
+			name='Stock2Shop\OrderExport\Observer\OrderSaveAfter'
 		/>
 	</event>
 </config>
