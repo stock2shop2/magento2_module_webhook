@@ -8,7 +8,7 @@ use Magento\Sales\Model\Order\Item as OI;
 final class Payload {
 	/**
 	 * 2018-08-11
-	 * @used-by json()
+	 * @used-by get()
 	 * @param IOA|OA|null $a
 	 * @return array(string => mixed)
 	 */
@@ -16,7 +16,7 @@ final class Payload {
 
 	/**
 	 * 2018-08-11
-	 * @used-by json()
+	 * @used-by get()
 	 * @return array(string => mixed)
 	 */
 	private function items() {return df_oqi_leafs($this->_o, function(OI $i) {return [
@@ -33,7 +33,7 @@ final class Payload {
 
 	/**
 	 * 2018-08-11
-	 * @used-by json()
+	 * @used-by get()
 	 * @return array(string => mixed)
 	 */
 	private function payment() {return array_filter(
@@ -44,7 +44,7 @@ final class Payload {
 
 	/**
 	 * 2018-08-11
-	 * @used-by json()
+	 * @used-by get()
 	 * @return array(string => mixed)
 	 */
 	private function visitor() {return [
@@ -56,7 +56,7 @@ final class Payload {
 
 	/**
 	 * 2018-08-11
-	 * @used-by json()
+	 * @used-by get()
 	 * @var O
 	 */
 	private $_o;
@@ -67,12 +67,12 @@ final class Payload {
 	 * @param O $o
 	 * @return string
 	 */
-	static function json(O $o) {$i = new self; $i->_o = $o; return df_json_encode([
+	static function get(O $o) {$i = new self; $i->_o = $o; return [
 		'billing_address' => $i->address($o->getBillingAddress())
 		,'customer' => !($cid = $o->getCustomerId()) ? [] : dfa_remove_objects(df_customer($cid))
 		,'line_items' => $i->items()
 		,'payment' => $i->payment()
 		,'shipping_address' => $i->address($o->getShippingAddress())
 		,'visitor' => $i->visitor()
-	] + dfa_remove_objects($o));}
+	] + dfa_remove_objects($o);}
 }

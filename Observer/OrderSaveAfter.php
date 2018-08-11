@@ -29,7 +29,7 @@ final class OrderSaveAfter implements ObserverInterface {
 						,"The order's state: «{$state}»"
 						,sprintf("The webhook's response: «%s»", df_chop(
 							df_try(
-								function() use($o) {return Facade::s()->post(Payload::json($o))[0];}
+								function() use($o) {return Facade::s()->post(Payload::get($o))[0];}
 								,function(\Exception $e) {return df_etsd($e);}
 							)
 						, 25000))
