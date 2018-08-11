@@ -18,7 +18,9 @@ final class Payload {
 	 * @used-by json()
 	 * @return array(string => mixed)
 	 */
-	private function customer() {return [];}
+	private function customer() {return !($id = $this->_o->getCustomerId()) ? [] :
+		dfa_remove_objects(df_customer($id)->getData())
+	;}
 
 	/**
 	 * 2018-08-11
