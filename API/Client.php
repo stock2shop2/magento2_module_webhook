@@ -1,5 +1,6 @@
 <?php
-namespace Stock2Shop\OrderExport;
+namespace Stock2Shop\OrderExport\API;
+use Stock2Shop\OrderExport\Settings as S;
 // 2018-08-11 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
 final class Client extends \Df\API\Client {
 	/**
@@ -18,5 +19,5 @@ final class Client extends \Df\API\Client {
 	 * @used-by url()
 	 * @return string
 	 */
-	protected function urlBase() {return Settings::s()->url();}
+	protected function urlBase() {return S::s()->url();}
 }

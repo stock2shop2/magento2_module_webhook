@@ -3,7 +3,7 @@ namespace Stock2Shop\OrderExport\Observer;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Sales\Model\Order as O;
-use Stock2Shop\OrderExport\Facade;
+use Stock2Shop\OrderExport\API\Facade;
 use Stock2Shop\OrderExport\Payload;
 use Stock2Shop\OrderExport\Settings as S;
 // 2018-08-11 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro

@@ -5,7 +5,7 @@ namespace Stock2Shop\OrderExport;
 final class Settings extends \Df\Config\Settings {
 	/**
 	 * 2018-08-11
-	 * @used-by \Stock2Shop\OrderExport\Client::urlBase()
+	 * @used-by \Stock2Shop\OrderExport\API\Client::urlBase()
 	 * @return string
 	 */
 	function url() {return $this->v();}
