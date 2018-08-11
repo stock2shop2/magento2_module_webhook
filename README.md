@@ -9,6 +9,13 @@ rm -rf var/di var/generation generated/code && bin/magento setup:di:compile
 ```
 If you have problems with these commands, please check the [detailed instruction](https://mage2.pro/t/263).
 
+## Backend settings
+
+![](https://mage2.pro/uploads/default/original/2X/5/5dc6483369d3628688092c098dd2cb42d28d0dce.png)
+
+## An order's history
+![](https://mage2.pro/uploads/default/original/2X/8/86a2ab2c6dba214c229b18b3dda388edeeea8119.png)
+
 ## Data example
 
 ```

@@ -23,11 +23,11 @@ final class OrderSaveAfter implements ObserverInterface {
 				if (S::s()->enable($o->getStore())) {
 					/** @var string $state */ /** @var string $status */
 					list($state, $status) = [$o->getState(), $o->getStatus()];
-					df_order_comment($o, df_cc_n(
+					df_order_comment($o, df_cc_br(
 						"The Stock2Shop's webhook is notified."
-						,"The order's status: «{$status}»"
-						,"The order's state: «{$state}»"
-						,sprintf("The webhook's response: «%s»", df_chop(
+						,"The order's status: «<b>{$status}</b>»."
+						,"The order's state: «<b>{$state}</b>»."
+						,sprintf("The webhook's response: «<b>%s</b>».", df_chop(
 							df_try(
 								function() use($o) {return Facade::s()->post(Payload::get($o))[0];}
 								,function(\Exception $e) {return df_etsd($e);}
