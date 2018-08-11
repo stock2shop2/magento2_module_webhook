@@ -47,12 +47,12 @@ final class Payload {
 	 * @used-by get()
 	 * @return array(string => mixed)
 	 */
-	private function visitor() {return [
+	private function visitor() {return df_clean([
 		'http_user_agent' => df_request_ua()
 		,'http_x_forwarded_for' => dfa($_ENV, 'HTTP_X_FORWARDED_FOR')
 		,'http_via' => dfa($_ENV, 'HTTP_VIA')
 		,'remote_addr' => df_visitor_ip()
-	];}
+	]);}
 
 	/**
 	 * 2018-08-11
