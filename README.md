@@ -1,4 +1,4 @@
-The module sends new order's data to a specified URL in a JSON format.
+The module sends a new order's data to a specified URL in a JSON format.
 
 ## How to install
 ```

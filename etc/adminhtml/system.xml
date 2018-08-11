@@ -1,0 +1,45 @@
+<?xml version='1.0'?>
+<config
+	xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+	xsi:noNamespaceSchemaLocation='urn:magento:module:Df_Config:etc/system_file.xsd'
+>
+	<system>
+		<section id='sales'>
+			<group
+				id='stock2shop'
+				showInDefault='1' showInStore='1' showInWebsite='1'
+				sortOrder='-1'
+				translate='label'
+			>
+				<label>Stock2Shop</label>
+				<dfExtension>Stock2Shop_OrderExport</dfExtension>
+				<frontend_model>Df\Config\Fieldset</frontend_model>
+				<field
+					id='enable'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='1'
+					translate='label'
+					type='Df\Framework\Form\Element\Checkbox'
+				>
+					<label>Enable?</label>
+					<backend_model>Df\Config\Backend\Checkbox</backend_model>
+					<comment><![CDATA[Enable sending of new order's data to a specified URL in a JSON format</a>?]]></comment>
+					<config_path>stock2shop/order_export/enable</config_path>
+				</field>
+				<field
+					id='url'
+					showInDefault='1' showInStore='1' showInWebsite='1'
+					sortOrder='2'
+					translate='label'
+					type='text'
+				>
+					<label>URL</label>
+					<comment><![CDATA[The URL the data will be sent to.]]></comment>
+					<config_path>stock2shop/order_export/url</config_path>
+					<depends><field id='enable'>1</field></depends>
+					<validate>required-entry</validate>
+				</field>
+			</group>
+		</section>
+	</system>
+</config>
