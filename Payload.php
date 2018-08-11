@@ -1,14 +1,17 @@
 <?php
 namespace Stock2Shop\OrderExport;
+use Magento\Sales\Api\Data\OrderAddressInterface as IOA;
 use Magento\Sales\Model\Order as O;
+use Magento\Sales\Model\Order\Address as OA;
 // 2018-08-11 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
 final class Payload {
 	/**
 	 * 2018-08-11
 	 * @used-by json()
+	 * @param IOA|OA|null $a
 	 * @return array(string => mixed)
 	 */
-	private function ba() {return [];}
+	private function address(IOA $a) {return !$a ? [] : dfa_remove_objects($a->getData());}
 
 	/**
 	 * 2018-08-11
@@ -40,13 +43,6 @@ final class Payload {
 	 * @used-by json()
 	 * @return array(string => mixed)
 	 */
-	private function sa() {return [];}
-
-	/**
-	 * 2018-08-11
-	 * @used-by json()
-	 * @return array(string => mixed)
-	 */
 	private function visitor() {return [
 		'http_user_agent' => df_request_ua()
 		,'http_x_forwarded_for' => dfa($_ENV, 'HTTP_X_FORWARDED_FOR')
@@ -68,11 +64,11 @@ final class Payload {
 	 * @return string
 	 */
 	static function json(O $o) {$i = new self; $i->_o = $o; return df_json_encode([
-		'billing_address' => $i->ba()
+		'billing_address' => $i->address($o->getBillingAddress())
 		,'customer' => $i->customer()
 		,'line_items' => $i->items()
 		,'payment' => $i->payment()
-		,'shipping_address' => $i->sa()
+		,'shipping_address' => $i->address($o->getShippingAddress())
 		,'visitor' => $i->visitor()
 	] + dfa_remove_objects($o->getData()));}
 }
